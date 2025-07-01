@@ -17,13 +17,17 @@
       overflow-x: hidden;
       touch-action: manipulation;
     }
+     .wrapper {
+     max-width: 100vw;
+     overflow-x: hidden;
+     box-sizing: border-box;
+     padding: 0;
+     margin: 0 auto;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
 
-    .container {
-      padding: 20px;
-      max-width: 500px;
-      margin: auto;
-      text-align: center;
-    }
+}
 
     h1 {
       color: #d63384;
@@ -131,7 +135,7 @@
 </head>
 <body>
 
-  <div class="container" id="gameArea">
+  <div class="wrapper" id="gameArea">
     <h1>Hi Barbie Saikia 💖</h1>
     <p>Tap the heart to begin...</p>
     <img src="barbie.jpeg" alt="Barbie" />
