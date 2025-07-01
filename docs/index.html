@@ -235,6 +235,14 @@
   </div>
 
   <script>
+    function openLoveLetter() {
+  document.getElementById("loveModal").style.display = "flex";
+}
+
+function closeLoveLetter() {
+  document.getElementById("loveModal").style.display = "none";
+}
+
     function checkName() {
       const name = document.getElementById("nameInput").value.trim().toLowerCase();
       if (name === "barbie") {
