@@ -2,35 +2,47 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Love Clicker for Barbie Saikia 💘</title>
   <style>
-    body {
-      font-family: 'Comic Sans MS', cursive;
-      background: linear-gradient(to bottom right, #ffd6e0, #ffe6f7);
-      text-align: center;
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
       margin: 0;
       padding: 0;
-      overflow: hidden;
+      font-family: 'Comic Sans MS', cursive;
+      background: linear-gradient(to bottom right, #ffd6e0, #ffe6f7);
+      overflow-x: hidden;
+      touch-action: manipulation;
+    }
+
+    .container {
+      padding: 20px;
+      max-width: 500px;
+      margin: auto;
+      text-align: center;
     }
 
     h1 {
       color: #d63384;
-      font-size: 2.8rem;
+      font-size: 2.2rem;
       margin-top: 30px;
     }
 
-    #photo {
-      width: 140px;
-      height: 140px;
+    img {
+      width: 130px;
+      height: 130px;
       border-radius: 50%;
       border: 4px solid #ff66b2;
       object-fit: cover;
       box-shadow: 0 0 15px #ff99cc;
+      margin-top: 20px;
     }
 
     #heart {
-      font-size: 100px;
+      font-size: 80px;
       margin-top: 20px;
       color: #ff4d6d;
       cursor: pointer;
@@ -44,26 +56,26 @@
     }
 
     #score {
-      font-size: 2rem;
+      font-size: 1.6rem;
       color: #c9184a;
-      margin-top: 15px;
+      margin-top: 10px;
     }
 
     #message {
-      margin-top: 20px;
-      font-size: 1.4rem;
+      margin-top: 15px;
+      font-size: 1.2rem;
       color: #800040;
-      min-height: 60px;
+      min-height: 50px;
     }
 
     #loveLetterBtn {
-      margin-top: 30px;
-      padding: 10px 25px;
-      font-size: 1.2rem;
+      margin-top: 25px;
+      padding: 10px 20px;
+      font-size: 1rem;
       background: #ff69b4;
       color: white;
       border: none;
-      border-radius: 30px;
+      border-radius: 25px;
       cursor: pointer;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
@@ -85,9 +97,7 @@
       width: 90%;
       max-width: 500px;
       border-radius: 15px;
-      text-align: left;
       color: #c71585;
-      font-size: 1.1rem;
       box-shadow: 0 0 20px #ff66cc;
       position: relative;
       max-height: 80vh;
@@ -115,54 +125,39 @@
       justify-content: center;
       flex-direction: column;
       padding: 20px;
-      font-size: 1.6rem;
-      text-align: center;
-    }
-
-    .fade-in {
-      animation: fadeIn 1s ease forwards;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      font-size: 1.4rem;
     }
   </style>
 </head>
 <body>
 
-  <div id="gameArea" class="fade-in">
+  <div class="container" id="gameArea">
     <h1>Hi Barbie Saikia 💖</h1>
-    <p style="font-size: 1.2rem; margin-bottom: 10px;">Tap the heart to begin...</p>
-    <img src="barbie.jpeg" alt="Barbie" class="barbie-photo" />
+    <p>Tap the heart to begin...</p>
+    <img src="barbie.jpeg" alt="Barbie" />
     <div id="heart" onclick="clickHeart()">💘</div>
     <div id="score">Love Points: 0</div>
     <div id="message"></div>
     <button id="loveLetterBtn" onclick="openLoveLetter()">💌 Read Secret Love Letter</button>
   </div>
 
-  <!-- Secret Love Letter Modal -->
   <div id="loveModal">
     <div id="modalContent">
       <span id="closeBtn" onclick="closeLoveLetter()">×</span>
       <h2 style="text-align:center;">To My Sweetheart 💖</h2>
       <p>
         Murr Shunumunu bubu,<br><br>
-        You are the most beautiful part of my world. Every smile you give, every moment we share, adds color to my life in ways I never imagined.<br><br>
-        You make my heart skip beats and dance in joy. With every click on this silly heart, I want to say: I love you more than words can express. ❤️<br><br>
-        Besi Overthink nkriba bujisa jaan moi tmk bohut bhal pau and yea i do care for you. One day i am gonna marry you and you'll be the happiest wife ever. I lovee you soo much jaann,
-        soo soo much bujisaaa<br><br>
-        Yours forever and always,<br>
-        Your one and only Boo💌
+        You're the heart of my life. Every smile, every moment, makes everything brighter.<br><br>
+        This game is just a tiny way to show that... I love you infinity times over.<br><br>
+        Besi Overthink nkriba bujisa jaan moi tmk bohut bhal pau and i do care for you. One day I’ll marry you and make you the happiest wife ever. 💍❤️<br><br>
+        Yours forever,<br>Your Boo 💌
       </p>
     </div>
   </div>
 
-  <!-- Thank You Page -->
   <div id="thankyouPage">
     <h1>💘 100 Love Points Reached! 💘</h1>
-    <p>Thank you for being mine, Bubuu. I love you to infinity and beyond. ❤️</p>
-    <p>You're not just part of my life — you're my whole world.</p>
+    <p>Thank you for being mine, Bubuu. You're my forever. ❤️</p>
   </div>
 
   <script>
@@ -176,11 +171,9 @@
       "Every click is a kiss 💋",
       "You are my happy place 🥰",
       "I'm lucky to love you 🍀",
-      "No one compares to you 💎",
       "You're my person 💑",
-      "Clicking for your love forever 💓",
-      "I love you more every second ⏳",
-      "Heartbeats belong to you 💘"
+      "I love you endlessly ⏳",
+      "Click click! Heartbeat 💓"
     ];
 
     function clickHeart() {
@@ -188,8 +181,7 @@
       scoreDisplay.innerText = `Love Points: ${score}`;
 
       if (score % 3 === 0) {
-        const msg = messages[Math.floor(Math.random() * messages.length)];
-        message.innerText = msg;
+        message.innerText = messages[Math.floor(Math.random() * messages.length)];
       }
 
       if (score === 100) {
