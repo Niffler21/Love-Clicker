@@ -99,6 +99,19 @@
   </style>
 </head>
 <body>
+  <audio id="bgMusic" src="odhikar.mp3" loop></audio>
+<button id="musicToggle" onclick="toggleMusic()" style="
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #ffc1e3;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(255, 192, 203, 0.5);
+">🎵 Pause Music</button>
   <div class="sparkle-bg"></div>
 
   <div id="nameGate">
@@ -148,13 +161,6 @@
     const mainGame = document.getElementById("mainGame");
     const gfNameEl = document.getElementById("gfName");
     const pointsEl = document.getElementById("points");
-
-    function enterGame() {
-      const name = document.getElementById("nameInput").value || "Barbie";
-      gfNameEl.textContent = name;
-      nameGate.style.display = "none";
-      mainGame.style.display = "block";
-    }
 
     function addLove() {
       points++;
@@ -250,6 +256,27 @@
       setInterval(addHeart, 800);
       draw();
     }
+    const music = document.getElementById("bgMusic");
+const musicBtn = document.getElementById("musicToggle");
+
+function toggleMusic() {
+  if (music.paused) {
+    music.play();
+    musicBtn.innerText = "🎵 Pause Music";
+  } else {
+    music.pause();
+    musicBtn.innerText = "🎵 Play Music";
+  }
+}
+
+// Updated enterGame to play music too
+function enterGame() {
+  const name = document.getElementById("nameInput").value || "Barbie";
+  gfNameEl.textContent = name;
+  nameGate.style.display = "none";
+  mainGame.style.display = "block";
+  music.play(); // Play music when game starts
+}
   </script>
 </body>
 </html>
