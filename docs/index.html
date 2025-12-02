@@ -100,34 +100,11 @@ button:hover { transform: scale(1.1); }
 <script>
 function startMusic(){
   const music = document.getElementById("bgMusic");
-  music.play().catch(()=>{});
+  music.play().catch((err)=>{
+    console.log("Audio play blocked:", err);
+  });
 }
-</script>
 
-<div class="container" <button id="yesBtn" onclick="startMusic(); forgiveYes()">Yes 😭💗</button>
-<button id="noBtn" onclick="startMusic(); runAway()">No 😡</button>
-
-  <h1>Hey Bubu 💗</h1>
-  <p style="font-size:1.2rem;color:#c9184a;line-height:1.5;">
-    I am really sorry for forgetting our<br>
-    <b>4 Year Love Anniversary</b> 💗<br><br>
-    I know I hurt you and I feel terrible about it.<br>
-    You mean everything to me … truly everything. 🥺<br><br>
-    Will you forgive me?
-  </p>
-
-  <button id="yesBtn" onclick="forgiveYes()">Yes 😭💗</button>
-  <button id="noBtn" onclick="runAway()">No 😡</button>
-</div>
-
-<!-- thank you page -->
-<div id="thankyouPage">
-  <h1>Thank You For Forgiving Me 💗</h1>
-  <p>You’re my forever person, my whole heart.<br>
-  I love you endlessly, Barbie. 🥺💘</p>
-</div>
-
-<script>
 let heartsInterval = null;
 
 function floatingHearts(){
@@ -152,6 +129,7 @@ function confettiEffect(){
 }
 
 function forgiveYes() {
+  startMusic();
   document.getElementById("thankyouPage").style.display="flex";
   document.getElementById("yesBtn").disabled = true;
 
@@ -162,6 +140,7 @@ function forgiveYes() {
 }
 
 function runAway(){
+  startMusic();
   const btn=document.getElementById("noBtn");
   const maxLeft = window.innerWidth - btn.offsetWidth - 10;
   const maxTop = window.innerHeight - btn.offsetHeight - 10;
@@ -170,6 +149,27 @@ function runAway(){
   btn.style.top=Math.random()*maxTop + "px";
 }
 </script>
+
+<div class="container">
+  <h1>Hey Bubu 💗</h1>
+  <p style="font-size:1.2rem;color:#c9184a;line-height:1.5;">
+    I am really sorry for forgetting our<br>
+    <b>4 Year Love Anniversary</b> 💗<br><br>
+    I know I hurt you and I feel terrible about it.<br>
+    You mean everything to me … truly everything. 🥺<br><br>
+    Will you forgive me?
+  </p>
+
+  <button id="yesBtn" onclick="forgiveYes()">Yes 😭💗</button>
+  <button id="noBtn" onclick="runAway()">No 😡</button>
+</div>
+
+<!-- thank you page -->
+<div id="thankyouPage">
+  <h1>Thank You For Forgiving Me 💗</h1>
+  <p>You’re my forever person, my whole heart.<br>
+  I love you endlessly, Barbie. 🥺💘</p>
+</div>
 
 </body>
 </html>
