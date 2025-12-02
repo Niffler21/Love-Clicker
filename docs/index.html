@@ -39,6 +39,7 @@ body {
   background: #fff0f5;
   border-radius: 20px;
   box-shadow:0 0 20px rgba(255,130,170,0.5);
+  box-sizing: border-box;
 }
 
 /* buttons */
@@ -49,7 +50,9 @@ button {
   border-radius: 25px;
   font-size: 18px;
   cursor: pointer;
+  transition: transform 0.2s;
 }
+button:hover { transform: scale(1.1); }
 #yesBtn {background:#ff69b4;color:white;}
 #noBtn {background:white;color:#ff69b4;border:2px solid #ff69b4;}
 
@@ -68,6 +71,21 @@ button {
   flex-direction:column;
   padding:20px;
   font-size:1.6rem;
+}
+
+/* confetti pieces */
+.confetti {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background-color: #ff69b4;
+  z-index: 60;
+  pointer-events: none;
+  animation: confettiFall 3s linear forwards;
+}
+@keyframes confettiFall {
+  0% {transform: translateY(0) rotate(0deg);}
+  100% {transform: translateY(600px) rotate(360deg); opacity:0;}
 }
 </style>
 </head>
@@ -108,6 +126,8 @@ function startMusic(){
 </div>
 
 <script>
+let heartsInterval = null;
+
 function floatingHearts(){
   const heart=document.createElement("div");
   heart.className="floating-heart";
@@ -118,16 +138,34 @@ function floatingHearts(){
   setTimeout(()=>heart.remove(),2000);
 }
 
+function confettiEffect(){
+  for(let i=0;i<20;i++){
+    const c = document.createElement("div");
+    c.className="confetti";
+    c.style.left = Math.random() * window.innerWidth + "px";
+    c.style.backgroundColor = ['#ff69b4','#ffc0cb','#ff1493','#ff85b3'][Math.floor(Math.random()*4)];
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),3000);
+  }
+}
+
 function forgiveYes() {
   document.getElementById("thankyouPage").style.display="flex";
-  setInterval(floatingHearts,200);
+  document.getElementById("yesBtn").disabled = true;
+
+  if(!heartsInterval){
+    heartsInterval = setInterval(floatingHearts,200);
+    setInterval(confettiEffect, 1000);
+  }
 }
 
 function runAway(){
   const btn=document.getElementById("noBtn");
+  const maxLeft = window.innerWidth - btn.offsetWidth - 10;
+  const maxTop = window.innerHeight - btn.offsetHeight - 10;
   btn.style.position="absolute";
-  btn.style.left=Math.random()*70+"vw";
-  btn.style.top=Math.random()*70+"vh";
+  btn.style.left=Math.random()*maxLeft + "px";
+  btn.style.top=Math.random()*maxTop + "px";
 }
 </script>
 
